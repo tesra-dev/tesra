@@ -1,0 +1,8 @@
+# CI profile: run everything, never retry (security tests must be deterministic),
+# and write a JUnit report for the ASVS gate.
+[profile.ci]
+fail-fast = false
+retries = 0
+
+[profile.ci.junit]
+path = "junit.xml"

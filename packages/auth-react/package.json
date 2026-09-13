@@ -1,0 +1,19 @@
+{
+  "name": "@tesra/auth-react",
+  "version": "0.0.0",
+  "private": true,
+  "description": "React provider and hooks for Tesra auth.",
+  "license": "MIT OR Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tesra-dev/tesra.git",
+    "directory": "packages/auth-react"
+  },
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p ."
+  }
+}

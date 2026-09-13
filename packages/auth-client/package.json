@@ -1,0 +1,19 @@
+{
+  "name": "@tesra/auth-client",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Typed client for the Tesra auth API, with WebAuthn helpers. Framework-agnostic.",
+  "license": "MIT OR Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tesra-dev/tesra.git",
+    "directory": "packages/auth-client"
+  },
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p ."
+  }
+}

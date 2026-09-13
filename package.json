@@ -1,0 +1,24 @@
+{
+  "name": "tesra",
+  "private": true,
+  "description": "A Rust auth kit held to OWASP ASVS and a React UI kit held to WCAG 2.2 AA.",
+  "license": "MIT OR Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tesra-dev/tesra.git"
+  },
+  "packageManager": "pnpm@12.4.1",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "check": "biome check .",
+    "check:ci": "biome ci .",
+    "format": "biome check --write .",
+    "typecheck": "pnpm -r --if-present run typecheck"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.13",
+    "typescript": "^7.0.2"
+  }
+}

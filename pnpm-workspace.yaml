@@ -1,0 +1,13 @@
+packages:
+  - packages/*
+
+# Supply-chain hardening (docs/blueprint.md §8.2).
+# Only install versions published at least a day ago (value in minutes).
+minimumReleaseAge: 1440
+# Fail if a package's publishing trust level drops, e.g. it loses provenance.
+trustPolicy: no-downgrade
+# Transitive dependencies may only come from the registry, not git or tarball URLs.
+blockExoticSubdeps: true
+# Fail instead of silently skipping dependency install scripts that aren't allowlisted.
+strictDepBuilds: true
+engineStrict: true

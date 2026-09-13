@@ -1,0 +1,19 @@
+{
+  "name": "@tesra/tokens",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Tesra design tokens in DTCG format, built to CSS custom properties for Tailwind CSS.",
+  "license": "MIT OR Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tesra-dev/tesra.git",
+    "directory": "packages/tokens"
+  },
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p ."
+  }
+}

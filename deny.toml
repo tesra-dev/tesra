@@ -1,0 +1,29 @@
+# cargo-deny policy: https://embarkstudios.github.io/cargo-deny/
+# CI runs `cargo deny --all-features check` on every PR and daily.
+
+[graph]
+all-features = true
+
+[advisories]
+# Any RustSec advisory fails the build, including yanked crates.
+# Ignoring one needs an entry here with the advisory ID and a reason.
+ignore = []
+yanked = "deny"
+
+[licenses]
+# Every new license gets a deliberate review before it's added here.
+allow = ["Apache-2.0", "MIT"]
+confidence-threshold = 0.93
+
+[bans]
+multiple-versions = "warn"
+wildcards = "deny"
+# Path dependencies between workspace crates don't need version requirements.
+allow-wildcard-paths = true
+
+[sources]
+# Crates come from crates.io only: no other registries and no git dependencies.
+unknown-registry = "deny"
+unknown-git = "deny"
+allow-registry = ["https://github.com/rust-lang/crates.io-index"]
+allow-git = []

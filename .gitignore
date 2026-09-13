@@ -1,0 +1,26 @@
+# Rust
+/target/
+
+# JavaScript
+node_modules/
+dist/
+.turbo/
+.next/
+storybook-static/
+coverage/
+playwright-report/
+test-results/
+*.tsbuildinfo
+
+# Python
+__pycache__/
+
+# Secrets and local config
+.env
+.env.*
+!.env.example
+
+# OS and editors
+.DS_Store
+.idea/
+*.swp

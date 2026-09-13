@@ -1,0 +1,12 @@
+[package]
+name = "tesra-auth-core"
+description = "Framework-agnostic authentication core mapped to OWASP ASVS 5.0: policies, passwords, sessions, MFA, passkeys, OIDC and audit events."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+publish.workspace = true
+
+[lints]
+workspace = true
