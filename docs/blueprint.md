@@ -1,6 +1,6 @@
 # Tesra blueprint
 
-> Phase 0 in progress, 2026-09-13.
+> Phase 0 done, 2026-09-13. Next: Phase 1.
 > Evidence: [research/2026-09-baseline.md](research/2026-09-baseline.md) and [research/2026-09-providers-and-tooling.md](research/2026-09-providers-and-tooling.md).
 
 ## 1. What Tesra is
@@ -284,7 +284,7 @@ Apple details:
 
 | Phase | Scope | Exit criteria | Status |
 |---|---|---|---|
-| 0. Foundation | git; Cargo and pnpm workspaces; Biome, clippy, rustfmt; cargo-deny; CI and Scorecard; ASVS gate; SECURITY.md; licenses | CI green on empty crates and packages; gate runs | In progress |
+| 0. Foundation | git; Cargo and pnpm workspaces; Biome, clippy, rustfmt; cargo-deny; CI and Scorecard; ASVS gate; SECURITY.md; licenses | CI green on empty crates and packages; gate runs | Done 2026-09-13 |
 | 1. Auth core (L1) | Password sign-up, sign-in and sign-out; sessions; CSRF; headers; throttling; anti-enumeration; reset flow; audit events; Postgres store; playground API | `--require-level 1` passes | |
 | 2. MFA and passkeys (L2) | Passkeys with conditional UI, TOTP, recovery codes, re-auth, session list and revocation, notifications | `--require-level 2` passes | |
 | 3. UI foundation (can run alongside 1–2) | Tokens, about 20 primitives on Base UI meeting the definition of done, Storybook, registry build, docs site | Registry installs cleanly into a fresh Next.js app and a fresh Vite app | |
@@ -294,9 +294,17 @@ Apple details:
 
 ## 10. Owner actions
 
-Only you can do these:
+**Done on 2026-09-13.** The public repository lives temporarily at [github.com/TesfamichaelA-code/tesra](https://github.com/TesfamichaelA-code/tesra). It has:
 
-1. Create the GitHub organization `tesra-dev` with a public repository `tesra`, then enable private vulnerability reporting in its security settings.
-2. Create the npm organization `tesra`; it's free for public packages.
-3. Register `tesra.dev`.
-4. At first release, configure trusted publishing for the repository on crates.io and npm.
+- private vulnerability reporting
+- Dependabot alerts and security updates
+- secret scanning with push protection
+- CodeQL default setup
+- a ruleset that blocks force-pushes to `main` and deletion of it
+
+**Still needs the owner:**
+
+1. **Create the GitHub organization `tesra-dev`.** GitHub has no API for creating organizations. The repository then transfers with one command, and GitHub redirects the old URL. Until then, the `tesra-dev` repository links in `Cargo.toml` and `package.json` don't resolve (nothing is published yet). `SECURITY.md` points at the current location, which keeps working after the transfer.
+2. **Create the npm organization `tesra`.** It's free for public packages.
+3. **Register `tesra.dev`.**
+4. **At first release,** configure trusted publishing on crates.io and npm.

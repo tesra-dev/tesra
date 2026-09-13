@@ -4,7 +4,7 @@ Tesra is security software, so vulnerability reports take priority over everythi
 
 ## Report a vulnerability
 
-Report privately through GitHub: **[open a private security advisory](https://github.com/tesra-dev/tesra/security/advisories/new)**. Please don't open a public issue, pull request or discussion.
+Report privately through GitHub: **[open a private security advisory](https://github.com/TesfamichaelA-code/tesra/security/advisories/new)**. Please don't open a public issue, pull request or discussion.
 
 Include what you can:
 
