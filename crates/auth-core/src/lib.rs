@@ -18,12 +18,20 @@
 //! # Ok::<(), Box<dyn std::error::Error>>(())
 //! ```
 
+pub mod clock;
 pub mod common_passwords;
 pub mod error;
+pub mod identity;
 pub mod password;
 pub mod policy;
+pub mod session;
+pub mod store;
 
+pub use clock::{Clock, FixedClock, SystemClock};
 pub use common_passwords::CommonPasswords;
 pub use error::{Error, Result};
+pub use identity::UserId;
 pub use password::{NormalizedPassword, PasswordRejected, Passwords, Verification};
 pub use policy::{PasswordPolicy, Profile, SessionPolicy};
+pub use session::{Session, SessionId, SessionToken, Sessions};
+pub use store::SessionStore;

@@ -12,19 +12,25 @@ publish.workspace = true
 workspace = true
 
 [features]
-default = ["common-passwords"]
+default = ["common-passwords", "memory-store"]
 # Embeds a list of ~40k common passwords so the blocklist check works offline.
 common-passwords = []
+# An in-memory session store, for tests and single-process deployments.
+memory-store = []
 
 [dependencies]
 argon2.workspace = true
+base64ct.workspace = true
 rand.workspace = true
 serde.workspace = true
+sha2.workspace = true
 thiserror.workspace = true
-time.workspace = true
+time = { workspace = true, features = ["serde"] }
 tracing.workspace = true
 unicode-normalization.workspace = true
+uuid.workspace = true
 zeroize.workspace = true
 
 [dev-dependencies]
 proptest.workspace = true
+tokio.workspace = true

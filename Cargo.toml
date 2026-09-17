@@ -13,14 +13,18 @@ publish = false
 
 [workspace.dependencies]
 argon2 = { version = "0.6", features = ["alloc", "password-hash", "zeroize", "rand_core"] }
+base64ct = { version = "1.8", features = ["alloc"] }
 rand = "0.10"
 secrecy = "0.10"
 serde = { version = "1", features = ["derive"] }
+sha2 = "0.11"
 subtle = "2.6"
 thiserror = "2"
 time = "0.3"
 tracing = "0.1"
+tokio = { version = "1", features = ["macros", "rt"] }
 unicode-normalization = "0.1"
+uuid = { version = "1", features = ["serde", "v4"] }
 zeroize = "1.9"
 proptest = "1.11"
 
