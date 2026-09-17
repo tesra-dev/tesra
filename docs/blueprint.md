@@ -294,7 +294,7 @@ Apple details:
 
 ## 10. Owner actions
 
-**Done on 2026-09-13.** The public repository lives temporarily at [github.com/TesfamichaelA-code/tesra](https://github.com/TesfamichaelA-code/tesra). It has:
+**Done.** The public repository lives at [github.com/tesra-dev/tesra](https://github.com/tesra-dev/tesra), created 2026-09-13 and moved into the `tesra-dev` organization on 2026-09-17. It has:
 
 - private vulnerability reporting
 - Dependabot alerts and security updates
@@ -302,9 +302,9 @@ Apple details:
 - CodeQL default setup
 - a ruleset that blocks force-pushes to `main` and deletion of it
 
+The npm organization `tesra` exists, and `tesra.dev` is being registered.
+
 **Still needs the owner:**
 
-1. **Create the GitHub organization `tesra-dev`.** GitHub has no API for creating organizations. The repository then transfers with one command, and GitHub redirects the old URL. Until then, the `tesra-dev` repository links in `Cargo.toml` and `package.json` don't resolve (nothing is published yet). `SECURITY.md` points at the current location, which keeps working after the transfer.
-2. **Create the npm organization `tesra`.** It's free for public packages.
-3. **Register `tesra.dev`.**
-4. **At first release,** configure trusted publishing on crates.io and npm.
+1. **At first release:** configure trusted publishing on crates.io and npm, and flip `publish` and `private` on the crates and packages that ship.
+2. **Optional:** register an OpenSSF Best Practices badge at bestpractices.dev, and decide whether to work through pull requests, which is what the Scorecard code-review and branch-protection checks look for.
