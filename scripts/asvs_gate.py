@@ -8,7 +8,9 @@ Checks, in order:
 2. Consistency: each status is allowed for its scope, n/a rows explain why, and
    each listed test ID names the requirement on its row.
 3. Evidence: `verified` rows list tests, all of which appear in the JUnit
-   reports, and no listed test that appears in a report failed.
+   reports, and no listed test that appears in a report failed. Evidence is
+   only checked when at least one --junit report is supplied; without one the
+   script checks structure alone and says so.
 4. Orphans: every ASVS-named test in the reports is listed in the matrix.
 5. Coverage: with --require-level N, every `kit` row at level N or lower is
    `verified`.
@@ -113,7 +115,13 @@ def load_reports(paths: list[Path]) -> dict[str, bool]:
     return results
 
 
-def check(rows: list[Row], asvs: dict[str, str], results: dict[str, bool], require_level: int = 0) -> list[str]:
+def check(
+    rows: list[Row],
+    asvs: dict[str, str],
+    results: dict[str, bool],
+    require_level: int = 0,
+    evidence: bool = True,
+) -> list[str]:
     problems: list[str] = []
     first_line: dict[str, int] = {}
 
@@ -148,7 +156,7 @@ def check(rows: list[Row], asvs: dict[str, str], results: dict[str, bool], requi
                 problems.append(f"{where}: {test_id} belongs to {requirement_for(test_id)}")
             elif test_id in results and not results[test_id]:
                 problems.append(f"{where}: {test_id} did not pass")
-            elif row.status == "verified" and test_id not in results:
+            elif evidence and row.status == "verified" and test_id not in results:
                 problems.append(f"{where}: {test_id} is missing from the test reports")
 
         if row.status == "verified" and not row.tests:
@@ -195,7 +203,10 @@ def main(argv: list[str] | None = None) -> int:
         print(f"asvs-gate: {error}", file=sys.stderr)
         return 1
 
-    problems = check(rows, asvs, results, args.require_level)
+    evidence = bool(args.junit)
+    if not evidence:
+        print("asvs-gate: no test reports supplied, checking structure only (pass --junit REPORT)", file=sys.stderr)
+    problems = check(rows, asvs, results, args.require_level, evidence)
     for problem in problems:
         print(f"asvs-gate: {problem}", file=sys.stderr)
     print(summary(rows, asvs))

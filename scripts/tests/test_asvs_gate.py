@@ -140,7 +140,23 @@ class EvidenceTests(GateTestCase):
         self.assert_fails(mark_verified(base_rows(), "V7.2.4", ""), "verified rows must list the tests")
 
     def test_verified_test_missing_from_reports_fails(self):
-        self.assert_fails(mark_verified(base_rows(), "V7.2.4", SESSION_TEST), "is missing from the test reports")
+        rows = mark_verified(base_rows(), "V7.2.4", SESSION_TEST)
+        cookie_test = "v3_3_1_session_cookie_is_secure"
+        rows[0]["tests"] = cookie_test
+        self.assert_fails(
+            rows,
+            f"{SESSION_TEST} is missing from the test reports",
+            reports=[junit({cookie_test: "pass"})],
+        )
+
+    def test_without_reports_structure_is_checked_but_evidence_is_not(self):
+        rows = mark_verified(base_rows(), "V7.2.4", SESSION_TEST)
+        output = self.assert_passes(rows)
+        self.assertIn("checking structure only", output)
+
+    def test_without_reports_structure_problems_still_fail(self):
+        rows = mark_verified(base_rows()[1:], "V7.2.4", SESSION_TEST)
+        self.assert_fails(rows, "V3.3.1: missing from the matrix")
 
     def test_failed_error_skipped_and_flaky_tests_fail(self):
         for outcome in ("failure", "error", "skipped", "flakyFailure", "rerunFailure"):
@@ -203,6 +219,7 @@ class RepositoryMatrixTests(unittest.TestCase):
         with contextlib.redirect_stdout(out), contextlib.redirect_stderr(out):
             code = asvs_gate.main([])
         self.assertEqual(code, 0, out.getvalue())
+        self.assertIn("checking structure only", out.getvalue())
 
 
 if __name__ == "__main__":
