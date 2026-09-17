@@ -12,7 +12,9 @@ yanked = "deny"
 
 [licenses]
 # Every new license gets a deliberate review before it's added here.
-allow = ["Apache-2.0", "MIT"]
+# Unicode-3.0 covers the character tables in unicode-ident, a build-time
+# dependency of serde and thiserror. It is permissive and OSI-approved.
+allow = ["Apache-2.0", "MIT", "Unicode-3.0"]
 confidence-threshold = 0.93
 
 [bans]

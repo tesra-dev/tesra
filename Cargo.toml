@@ -11,6 +11,19 @@ repository = "https://github.com/tesra-dev/tesra"
 # Flip to true per crate once it is ready for a first release.
 publish = false
 
+[workspace.dependencies]
+argon2 = { version = "0.6", features = ["alloc", "password-hash", "zeroize", "rand_core"] }
+rand = "0.10"
+secrecy = "0.10"
+serde = { version = "1", features = ["derive"] }
+subtle = "2.6"
+thiserror = "2"
+time = "0.3"
+tracing = "0.1"
+unicode-normalization = "0.1"
+zeroize = "1.9"
+proptest = "1.11"
+
 [workspace.lints.rust]
 missing_docs = "warn"
 unreachable_pub = "warn"

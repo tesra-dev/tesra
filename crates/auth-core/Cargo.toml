@@ -10,3 +10,21 @@ publish.workspace = true
 
 [lints]
 workspace = true
+
+[features]
+default = ["common-passwords"]
+# Embeds a list of ~40k common passwords so the blocklist check works offline.
+common-passwords = []
+
+[dependencies]
+argon2.workspace = true
+rand.workspace = true
+serde.workspace = true
+thiserror.workspace = true
+time.workspace = true
+tracing.workspace = true
+unicode-normalization.workspace = true
+zeroize.workspace = true
+
+[dev-dependencies]
+proptest.workspace = true
